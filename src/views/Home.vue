@@ -1,19 +1,15 @@
 <template>
   <div class="home">
     <h1>Home</h1>
+     
+     <input type="text" v-model="search">
 
-    <h2>Refs</h2>
+     <p>I risultati della ricerca per {{ search }}</p>
+     <div v-for="name in filteredNames" :key="name">
+      <h5>{{ name }}</h5>
 
-    <p>{{ person.name }} - {{ person.age }}</p>
-
-
-    <button @click="updatePerson">Modifica l'età</button>
-
-    <h2>Reactive</h2>
-
-    <p>{{ personTwo.name }} - {{ personTwo.age }}</p>
-
-    <button @click="updatePersonTwo">Modifica l'età</button>
+     </div>
+ 
 
 
 
@@ -21,31 +17,28 @@
 </template>
 
 <script>
-import { ref, reactive } from 'vue';
+import { ref, computed } from 'vue';
 
 
 export default {
   name: 'Home',
   setup() {
-    //  const p = ref('hello');
-    //  console.log(p.value);
-     const person = ref({ name: 'Gianluca', age: 26 });
-     const personTwo = reactive({ name: 'Mario', age: 30});
+   const search = ref('');
+   const names = ref(['Gianluca', 'Matteo', 'Luigi', 'Francesco' , 'Daniele']);
 
-     const updatePerson = () => {
-       person.value.age = 25;
-    
-     }
-     const updatePersonTwo = () => {
-       personTwo.age = 20;
-    
-     }
+
+   const filteredNames = computed(() => {
+       return names.value.filter((name) => name.includes(search.value));
+   });
+   
+
+     
 
      return {
-      person,
-      updatePerson,
-      personTwo,
-      updatePersonTwo
+       names,
+       search,
+       filteredNames
+       
      }
   },
 }
