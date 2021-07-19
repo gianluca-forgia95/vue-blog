@@ -1,8 +1,17 @@
 <template>
   <div class="home">
     <h1>Home</h1>
+     <div v-if="error">
+        {{ error }}
+      </div>
+      <div v-if="posts.length">
+        <PostList :posts="posts" />
+      </div>
+
+      <div v-else>
+        <h5>Loading...</h5>
+      </div>
      
-     <PostList v-if="showPosts" :posts="posts" />
 
      <button @click="showPosts = !showPosts">toggle posts</button>
  
@@ -13,34 +22,26 @@
 </template>
 
 <script>
-import { ref } from 'vue';
-import PostList from '../components/PostList.vue';
 
+import PostList from '../components/PostList.vue';
+import getPosts from '../composables/getPosts'
 
 export default {
   components: { PostList },
   name: 'Home',
   components: { PostList },
   setup() {
-     const posts = ref([]);
+     
+     const { posts, error, load} = getPosts();
 
-     const error = ref(null);
+     load();
 
-     const showPosts = ref(true);
-
-     const load = async () => {
-       try {
-
-       }
-       catch (err) {
-         let data = await fetch('http/')
-       }
-     }
-
+     //const showPosts = ref(true);
     
      return {
       posts,
-      showPosts
+      error,
+      //showPosts
        
      }
   },
