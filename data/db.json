@@ -1,0 +1,28 @@
+{
+    "posts": [
+        {
+            "id": 1,
+            "title": "Welcome to the new blog",
+            "content" : "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusamus aspernatur inventore id odio? Aut, nobis nemo ut reiciendis distinctio, quos fugiat pariatur, saepe odit sed culpa molestiae iste voluptatibus voluptate",
+            "tags" : [
+               "Html",
+               "CSS",
+               "Javascript"
+            ]
+
+        },
+        {
+            "id": 2,
+            "title": "5 Javascript tools and tricks",
+            "content" : " inventore id odio? Aut, nobis nemo ut reiciendis distinctio, quose odit sed culpa molestiae. iste voluptatibus voluptate",
+            "tags" : [
+               "Html",
+               "CSS",
+               "Javascript",
+               "Jquery"
+            ]
+
+        }
+
+    ]
+}
