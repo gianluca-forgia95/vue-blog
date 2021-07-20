@@ -25,12 +25,16 @@
 
 <script>
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 export default {
     setup() {
         const title = ref('');
         const content = ref('');
         const tag = ref('');
         const tags = ref([]);
+
+        const router = useRouter()
+        console.log(router)
 
         const handleKeydown = () => {
             if ( !tags.value.includes(tag.value) ) {
@@ -52,6 +56,7 @@ export default {
                 headers: { 'Content-Type' : 'Application/json' },
                 body: JSON.stringify(post)
             })
+            router.push({ name: 'Home'});
 
         }
 
