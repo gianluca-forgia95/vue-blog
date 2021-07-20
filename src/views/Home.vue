@@ -11,9 +11,6 @@
       <div v-else>
         <Spinner />
       </div>
-     
-
-     <button @click="showPosts = !showPosts">toggle posts</button>
  
 
     
@@ -47,3 +44,15 @@ export default {
   },
 }
 </script>
+
+
+<style>
+
+.home {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+
+</style>
